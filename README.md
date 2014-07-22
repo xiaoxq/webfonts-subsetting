@@ -1,4 +1,6 @@
-webfont-auto-tailor
+webfonts-autotailor
 ===================
 
-Auto tailor font files for every page. The font will be used for webfont service, and only contain the characters in that page. It's useful for those languages which have many glyphs, such as Chinese Hanzi.
+Tailor font files for every page automatically. The tailored font will be used for webfonts service, and only contains the characters in each page.
+
+It's useful for those languages which have many glyphs, such as Chinese Hanzi.
