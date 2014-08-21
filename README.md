@@ -1,6 +1,6 @@
-webfonts-autotailor
+webfonts-subsetting
 ===================
 
-Tailor font files for every page automatically. The tailored font will be used for webfonts service, and only contains the characters in each page.
+Tailor / Subsetting font files for web page automatically. The tailored font will be used for webfonts service, and only contains th
 
-It's useful for those languages which have many glyphs, such as Chinese Hanzi.
+It's useful for those languages with massive glyphs, such as Chinese Hanzi.
