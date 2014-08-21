@@ -3,6 +3,7 @@
 <head>
 	<meta charset = "utf-8" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+	<script src="../lib/jquery.json.js" ></script>
 	<script src="../src/webfonts.subsetting.js"></script>
 	<style type="text/css">
 		.cn_font { font-family: 'WenQuanYi Micro Hei'; }
@@ -19,13 +20,17 @@
 	“<span class="red">你挑着担，我牵着马</span>”不被包含； <br/>
 	“<font face="WenQuanYi Micro Hei">天不下雨天不刮风天上有太阳</font>”须被包含。 <br/>
 	<br/>
-	---> 裁剪后的字体中应包含：“<span class="cn_font">走啊，到九月天不下雨刮风上有太阳</span>”。 <br/>
+	---> 裁剪后的字体中应包含：“<span class="cn_font">走啊，到九月天不下雨刮风上有太阳</span>”。 
+	<a href="#" id="cn_download">[下载字体]</a>
+
+	<hr/>
 
 	<h2>English Sample</h2>
-	"<span class="en_font">ABC</span> should be included; <br/>
+	"<span class="en_font">ABC</span>" should be included; <br/>
 	"<span class="red">DEF</span>" should not be included; <br/>
 	"<font face="UnifrakturMaguntia">GHI</font>" should be included. <br/>
 	<br/>
-	---> The subsetted font should contain "<span class="en_font">ABCGHI</span>". <br/>
+	---> The subsetted font should contain "<span class="en_font">ABCGHI</span>".
+	<a href="#" id="en_download">[Download it]</a>
 </body>
 </html>
