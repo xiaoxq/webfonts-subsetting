@@ -37,14 +37,14 @@ function phpfontlibSubsetting( $srcFont, $destFont, $subset ) {
 
 function subsetting( $font, $subset ) {
 	global $FONTS_BASE, $FONTS_URL_BASE;
+	// convert the font face name to font file name by removing ' '
 	$fontname = str_replace( ' ', '', $font );
 	$fontpath = "$FONTS_BASE/$fontname.ttf";
-
-	// no source font
+	// no source font available
 	if ( !file_exists( $fontpath ) ) {
 		return null;
 	}
-	
+
 	$subsetFontPath = "$FONTS_BASE/$fontname";
 	if ( !file_exists( $subsetFontPath ) ) {
 		mkdir( $subsetFontPath );
@@ -56,8 +56,6 @@ function subsetting( $font, $subset ) {
 
 		// fix the subsetted ttf with fontforge, it's a bug from php-font-lib
 		$tempFile = $subsetFont . ".tmp.ttf";
-		ini_set( 'display_errors', 'On' );
-		ini_set( 'error_reporting', E_ALL | E_STRICT );
 		exec( "./fix_ttf.pe $subsetFont $tempFile 1> fix_ttf.out 2>&1 " );
 		exec( "mv $tempFile $subsetFont 1>mv_ttf.out 2>&1" );
 	}
@@ -67,19 +65,16 @@ function subsetting( $font, $subset ) {
 }
 
 function main() {
-	if ( !isset( $_POST['subsets'] ) )
-		return;
-
-	$subsets = json_decode( $_POST['subsets'] );
 	$subsetsUrl = array();
-	foreach ( $subsets as $font => $subset ) {
+	foreach ( $_POST as $font => $subset ) {
+		// note that sometimes spaces in parameters are auto-replaced as '_'
+		$font = str_replace( '_', ' ', $font );
 		// change the value from subset to url
 		$url = subsetting( $font, $subset );
 		if ( $url ) {
 			$subsetsUrl[$font] = $url;
 		}
 	}
-
 	echo json_encode( $subsetsUrl );
 }
 

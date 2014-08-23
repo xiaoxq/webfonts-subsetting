@@ -89,12 +89,11 @@
 	 * Send the subsets wanted to server
 	 */
 	function requestSubsets() {
-		var subsetsStr = $.toJSON( gSubsets );
-
+		$.isPlainObject(gSubsets);
 		$.ajax( {
 			url : SUBSETTING_URL,
 			type : 'POST',
-			data : { 'subsets': subsetsStr },
+			data : gSubsets,
 			dataType : 'json',
 
 			success : function( data, status, xhr ) {
