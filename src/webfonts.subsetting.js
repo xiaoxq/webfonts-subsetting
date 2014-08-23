@@ -13,7 +13,8 @@
 	 * Constants
 	 */
 	var ELEMENT_TYPE = 1,
-		TEXT_TYPE = 3;
+		TEXT_TYPE = 3,
+		SUBSETTING_URL = "../src/webfonts_subsetting.php";
 
 	/**
 	 * Globals
@@ -67,7 +68,7 @@
 	/**
 	 * Generate css according to the urls returned, and apply to the page
 	 */
-	function applyWebfontsSubsetts( fontUrls ) {
+	function applyWebfonts( fontUrls ) {
 		var cssStr = '';
 
 		for ( var font in fontUrls ) {
@@ -87,19 +88,21 @@
 	/**
 	 * Send the subsets wanted to server
 	 */
-	function requestWebfontsSubset() {
+	function requestSubsets() {
 		var subsetsStr = $.toJSON( gSubsets );
 
 		$.ajax( {
-			url : "../src/WebfontsSubsets.php",
+			url : SUBSETTING_URL,
 			type : 'POST',
-			data : subsetsStr,
+			data : { 'subsets': subsetsStr },
 			dataType : 'json',
 
 			success : function( data, status, xhr ) {
-				// it is something like { font:url, ... }
-				var fontsUrl = $.parseJSON( data );
-				applyWebfontsSubsetts( fontsUrl );
+				if ( status !== 'success' ) {
+					return;
+				}
+				// data is something like { font:url, ... }
+				applyWebfonts( data );
 			},
 
 			// handle errors
@@ -112,15 +115,15 @@
 	$( document ).ready( function() {
 		traverseTextNode( document.body, collectSubsets );
 		for ( var font in gSubsets ) {
-			var uniqChars = '';
+			var subset = '';
 			for ( var ch in gSubsets[font] ) {
-				uniqChars += ch;
+				subset += ch;
 			}
 			// note that the uniq chars has been sorted
-			gSubsets[font] = uniqChars;
+			gSubsets[font] = subset;
 		}
 
-		requestWebfontsSubset();
+		requestSubsets();
 	} );
 
 }( jQuery ) );

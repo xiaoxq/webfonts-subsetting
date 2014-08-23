@@ -1,0 +1,18 @@
+#!/usr/bin/env fontforge
+
+# @package webfonts-autotailor
+# @link    https://github.com/xiaoxq/webfonts-autotailor
+# @author  Aaron Xiao <xiaoxiangquan@gmail.com>
+# @license GNU General Public Licence 3.0
+#
+# This script will read in a TTF font file and output it with fontforge,
+# to fix possible errors in format
+#
+# usage:
+# $0 <in.ttf> <out.ttf>
+
+Open($1,1)
+SelectAll()
+Copy()
+Generate($2)
+Close()
