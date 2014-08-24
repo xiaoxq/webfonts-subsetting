@@ -8,13 +8,13 @@
 		'WenQuanYi Micro Hei' : 1,
 		'UnifrakturMaguntia' : 1
 	};
+	var SUBSETTING_URL = "../src/webfonts_subsetting.php";
 
 	/**
 	 * Constants
 	 */
 	var ELEMENT_TYPE = 1,
-		TEXT_TYPE = 3,
-		SUBSETTING_URL = "../src/webfonts_subsetting.php";
+		TEXT_TYPE = 3;
 
 	/**
 	 * Globals
