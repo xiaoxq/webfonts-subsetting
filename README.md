@@ -28,3 +28,10 @@ Online Examples
 
 [Goto online example hosted on Wiki Media Fundation Labs](http://fonttailor.wmflabs.org/webfonts-subsetting)<br />
 [Goto example integrated into mediawiki](http://fonttailor.wmflabs.org)<br />
+
+
+Better Integration
+-------------------
+I implement this as simple as possible, to make it extensible for different scenarios. Maybe you need some ideas about how to integrate it better.<br/>
+1. Cache. Subsetting is a time-consuming work, so you'd better cache the subsetted fonts. And during the subsetting request, send a hash first to expect cache-hitting, while not send the huge set of characters sequence.<br/>
+2. Lock. Conflicts may happen when multiple requests for the same subsetting job reach at the same time, so you'd better have a lock when you doing subsetting for each subset.<br/>
