@@ -19,7 +19,7 @@ As shown in /example:<br/>
     Make sure the php has WRITE access to the font directory
     Make sure the php has WRITE access to its own directory if you want to see logs
 
-If every thing goes well, you'll see some subsetted font files in the fonts directory, and a <style> element of font-faces is added at the ending of <head>.<br/>
+If every thing goes well, you'll see some subsetted font files in the fonts directory, and a &lt;style&gt; element of font-faces is added at the ending of &lt;head&gt;.<br/>
 Or you can check the logs ( fix_ttf.out, mv_ttf.out ) beside webfonts_subsetting.php to find what happened.
 
 
